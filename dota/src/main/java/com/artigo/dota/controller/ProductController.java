@@ -58,9 +58,9 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
-    @GetMapping("details/availability")
-    public ResponseEntity<List<ProductDetailQuantityDTO>> getProductDetailQuantities(@RequestParam List<Long> idList) {
-        return ResponseEntity.ok(productDetailsService.getProductDetailQuantities(idList));
+    @PostMapping("details/availability")
+    public ResponseEntity<List<ProductDetailQuantityDTO>> getProductDetailQuantities(@RequestBody ProductDetailQuantitiesRequestDTO productDetailQuantitiesRequestDTO) {
+        return ResponseEntity.ok(productDetailsService.getProductDetailQuantities(productDetailQuantitiesRequestDTO.getProductDetailIds()));
     }
 
     @PostMapping
